@@ -30,6 +30,7 @@
 
 #include "include/livox_ros_driver2.h"
 #include "include/ros_headers.h"
+#include <stdexcept>
 #include "driver_node.h"
 #include "ext_imu_bridge.h"
 #include "lddc.h"
@@ -158,6 +159,10 @@ DriverNode::DriverNode(const rclcpp::NodeOptions & node_options)
   this->get_parameter("publish_freq", publish_freq);
   this->get_parameter("output_data_type", output_type);
   this->get_parameter("frame_id", frame_id);
+  if (xfer_format != kPointCloud2Msg && xfer_format != kLivoxCustomMsg && xfer_format != kAllMsg) {
+    throw std::invalid_argument("ROS2 xfer_format must be 0, 1, or 4");
+  }
+
 
   if (publish_freq > 100.0) {
     publish_freq = 100.0;
@@ -189,7 +194,8 @@ DriverNode::DriverNode(const rclcpp::NodeOptions & node_options)
     if ((read_lidar->InitLdsLidar(user_config_path))) {
       DRIVER_INFO(*this, "Init lds lidar success!");
     } else {
-      DRIVER_ERROR(*this, "Init lds lidar fail!");
+      DRIVER_ERROR(*this, "Init lds lidar fail! Check the config and host IP address.");
+      throw std::runtime_error("LiDAR initialization failed");
     }
   } else {
     DRIVER_ERROR(*this, "Invalid data src (%d), please check the launch file", data_src);

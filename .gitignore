@@ -1,28 +1,20 @@
-# Build artifacts
+# Workspace and runtime outputs
 build/
 install/
 log/
-
-# LI-Init runtime outputs (logs + calibration results)
-lidar_imu_init_ros2/Log/
-lidar_imu_init_ros2/result/
-
-# Python
+Log/
+PCD/
+result/
+# Python and editor files
 __pycache__/
 *.pyc
 *.pyo
-
-# IDE
 .vscode/
 .idea/
-
-# Backup files
+.marscode/
 *.bak
-
-# ROS2
-*.pyc
+# Generated libraries
 *.so
-
-# System
+*.a
 .DS_Store
 Thumbs.db

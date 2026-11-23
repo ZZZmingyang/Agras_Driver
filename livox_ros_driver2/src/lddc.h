@@ -44,6 +44,7 @@ typedef enum {
   kLivoxCustomMsg = 1,
   kPclPxyziMsg = 2,
   kLivoxImuMsg = 3,
+  kAllMsg = 4,
 } TransferType;
 
 /** Type-Definitions based on ROS versions */
@@ -102,6 +103,7 @@ class Lddc final {
 
   void PublishPointcloud2(LidarDataQueue *queue, uint8_t index);
   void PublishCustomPointcloud(LidarDataQueue *queue, uint8_t index);
+  void PublishAllPointcloud(LidarDataQueue *queue, uint8_t index);
   void PublishPclMsg(LidarDataQueue *queue, uint8_t index);
 
   void PublishImuData(LidarImuDataQueue& imu_data_queue, const uint8_t index);
@@ -130,6 +132,10 @@ class Lddc final {
 
   PublisherPtr GetCurrentPublisher(uint8_t index);
   PublisherPtr GetCurrentImuPublisher(uint8_t index);
+#ifdef BUILDING_ROS2
+  Publisher<PointCloud2>::SharedPtr GetPointcloud2Publisher(uint8_t index);
+  Publisher<PointCloud2>::SharedPtr pointcloud2_pub_[kMaxSourceLidar];
+#endif
 
  private:
   uint8_t transfer_format_;

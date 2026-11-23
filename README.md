@@ -1,209 +1,132 @@
-# Agras MID360 Driver
+# Agras MID360 ROS2 包集合
 
+将整个 `Agras_Driver` 放进 ROS2 工作区的 `src/`，然后使用标准 `colcon` 和 `ros2 launch`。
+外层目录不单独构成 ROS 包，也不包含自己的 `build/install/log`。
 
-**系统架构**: `L431_ADI (MCU固件)` → ttyIMU → `ext_imu_bridge (本驱动)` → `/livox/imu` → `FAST-LIO`
-
-> **配套 MCU 固件**: [L431_ADI](https://gitcode.com/gcw_4Fu256zc/L431_ADI/tree/v1.0) — STM32L431RCTx + FreeRTOS，驱动 ADIS16500/16470/16505 IMU，1000Hz SPI 采集 + MAVLink v2 协议输出，支持陀螺/加速度计自动校准。
-
----
-
-## ⚠️ 注意事项（使用前必读）
-
-### 网络配置（不可更改）
-Agras 雷达的 IP 和端口由固件固定，**不可修改**：
-
-| 配置项 | 固定值 |
-|--------|--------|
-| 雷达 IP | **192.168.1.10** |
-| 主机 IP | **192.168.1.20**（必须设置为此 IP） |
-| 点云端口 | **60001** |
-| IMU 端口 | **60003** |
-
-
-> 使用前请将主机网卡 IP 设置为 `192.168.1.20`，子网掩码 `255.255.255.0`。
-
-### FOV 缩减
-Agras 固件屏蔽了右后方约 **60°** 扇区（方位角 [-180°, -130°] 及 [170°, 180°]），实际 FOV 约 **300°**。
-
-### 200m Sentinel 点
-Agras 固件在无激光回波时生成距离恰好 **200m**、反射率为 **0** 的占位点（标准 MID360 使用全零坐标）。驱动已设置 `>50m` 过滤丢弃这些点。
-
-### 适用场景
-本驱动仅适配 **Agras MID360（定制固件）** 和 **标准 MID360**。其他 Livox 型号（HAP、MID360s 等）已移除支持，如需使用请自行甄别和适配。
-
-
-## 模块改动汇总
-
-### 1. livox_ros_driver2
-
-#### 点云解析适配
-| 文件 | 改动 |
-|------|------|
-| `src/comm/pub_handler.cpp` | **移除 Agras 的 tag 分线逻辑**，统一使用 `i % line_num` 轮转分配 4 条激光线 |
-| `src/comm/pub_handler.cpp` | **>50m 距离点直接丢弃**（Agras 固件在 200m 处放置无回波 sentinel） |
-| `src/comm/pub_handler.cpp` | 移除 `use_tag_for_line = true`（version=1 检测逻辑） |
-| `src/comm/pub_handler.cpp` | 移除 `[DEBUG ROS]` / `[FILTER]` 等调试输出 |
-| `src/comm/comm.h` | 移除 `kLineNumberHAP`，精简为 MID360 专用 |
-
-#### IMU 数据修复
-| 文件 | 改动 |
-|------|------|
-| `src/lddc.cpp` | **加速度 G → m/s² 转换（×9.8）**，修复 FAST-LIO 重力补偿错误导致的定位漂移 |
-
-#### 配置与启动文件
-| 文件 | 说明 |
-|------|------|
-| `config/AGRAS_MID360_config.json` | **新增** Agras 网络配置（端口 60001/60003，IP 192.168.1.10） |
-| `config/MID360_config.json` | 保留原版 MID360 配置 |
-| `config/agras_pointcloud.rviz` | **新增** RViz 点云可视化配置 |
-| `config/agras_minimal.rviz` | **新增** RViz 精简配置 |
-| `config/agras_tf.rviz` | **新增** RViz TF 显示配置 |
-| `launch_ROS2/msg_AGRAS_MID360_launch.py` | **新增** Agras 驱动启动（无 RViz） |
-| `launch_ROS2/rviz_AGRAS_MID360_launch.py` | **新增** Agras 驱动启动 + RViz2 + 静态 TF |
-
-
-#### Agras vs MID360 差异
-| 参数 | MID360 | Agras |
-|------|--------|-------|
-| version | 0 | **1** |
-| 端口 | 56300/56400 | **60001/60003** |
-| 帧率 | 21.9Hz 固定 | **25~33Hz 动态** |
-| FOV | 360°全覆盖 | **~300°（右后方 60°屏蔽）** |
-| 无回波标记 | tag=0x00 + (0,0,0) | **200m sentinel（ref=0）** |
-| tag 编码 | 位掩码 | **线号+回波号** |
-| IMU 频率 | 200Hz | **~184Hz** |
-| IMU 加速度单位 | G（驱动转换 m/s²） | G（驱动转换 m/s²） |
-
----
-
-### 2. FAST_LIO_ROS2
-
-| 文件 | 改动 |
-|------|------|
-| `config/agras_mid360.yaml` | **新增** Agras 参数：`lidar_type: 1`、`scan_rate: 10`、`det_range: 50m`、`blind: 0.3m`、**`b_gyr_cov: 0.001`（适配陀螺偏置）** |
-| `config/mid360.yaml` | 保留原版配置 |
-| `src/laserMapping.cpp` | **8 处 `camera_init` → `livox_frame`**，修复 TF 帧名不匹配 |
-| `src/preprocess.cpp` | 适配 Agras 点云格式和 timestamp 处理 |
-| `rviz/fastlio.rviz` | 修复 Fixed Frame `camera_init` → `livox_frame` |
-| `launch/mapping.launch.py` | 添加 `map → livox_frame` 静态 TF 发布 |
-
----
-
-### 3. Livox-SDK2
-
-| 文件 | 改动 |
-|------|------|
-| `sdk_core/device_manager.cpp` | 添加 Agras 端口识别（60001/60003），移除 `[DEBUG SDK]` 输出 |
-| `sdk_core/data_handler/data_handler.cpp` | 移除 `[DEBUG SDK] DataHandler::Handle` 输出 |
-| `sdk_core/comm/define.h` | 添加 Agras 端口常量 |
-| `sdk_core/command_handler/mid360_command_handler.cpp` | 适配 Agras version=1 协议 |
-| `sdk_core/params_check.cpp` | 适配 Agras 参数校验 |
-
----
-
-### 4. 外部 IMU 桥接器 (L431_ADI) — **新增**
-
-对接 [L431_ADI](https://gitcode.com/gcw_4Fu256zc/L431_ADI/tree/v1.0) MCU 固件，
-从串口 `/dev/ttyIMU` 读取 ADIS16500/ADIS16470 外部高精度 IMU，
-替代 Livox 内置 IMU，提升 SLAM 精度。
-
-| 文件 | 说明 |
-|------|------|
-| `livox_ros_driver2/src/ext_imu_bridge.h` | **新增** 桥接器类声明，单位枚举 (`rad/s`↔`deg/s`, `m/s²`↔`G`) |
-| `livox_ros_driver2/src/ext_imu_bridge.cpp` | **新增** MAVLink v2 解析、串口读取线程、ROS2 发布线程 |
-| `livox_ros_driver2/src/livox_ros_driver2.cpp` | 新增 `ext_imu_*` 参数声明 + `InitExtImuBridge()` |
-| `livox_ros_driver2/src/driver_node.h/cpp` | 新增 `ExtImuBridge` 成员 + 析构安全停止 |
-
-#### 协议格式
-MCU 固件通过串口发送 **MAVLink v2** 协议帧，驱动使用官方 MAVLink C 库解析：
-
-```
-MAVLink v2 帧结构:
-  STX(0xFD) + LEN + INCOMPAT_FLAGS + COMPAT_FLAGS + SEQ
-  + SYSID + COMPID + MSGID(3B) + PAYLOAD + CHECKSUM(2B)
-
-消息类型: HIGHRES_IMU (msgid=105), 500Hz
-  - time_usec:   MCU 采样时刻 (μs)
-  - xgyro/ygyro/zgyro:  陀螺仪 (rad/s 或 deg/s, 固件可配)
-  - xacc/yacc/zacc:     加速度计 (m/s² 或 G, 固件可配)
-  - temperature:         温度 (°C)
-
-CRC/帧解析/签名验证: 全部委托 MAVLink 官方库，无手写逻辑。
+```text
+ros_ws/
+├── src/
+│   └── Agras_Driver/
+│       ├── livox_ros_driver2/     # 驱动与内置 Agras Livox-SDK2 源码
+│       ├── fast_lio/              # FAST-LIO2 ROS2 适配
+│       ├── lidar_imu_init/         # LI-Init 标定
+│       ├── fc_ext_imu_verify/      # 飞控与外置 IMU 对比工具
+│       └── agras_bringup/          # 组合启动与参数配置
+├── build/
+├── install/
+└── log/
 ```
 
-#### 启动配置 (msg_AGRAS_MID360_launch.py)
-```python
-ext_imu_enable        = True       # 启用外部 IMU
-ext_imu_port          = '/dev/ttyIMU'
-ext_imu_gyro_unit     = 0          # 0=rad/s (Livox/FAST_LIO), 1=deg/s
-ext_imu_accel_unit    = 0          # 0=m/s² (Livox/FAST_LIO), 1=G
-ext_imu_topic         = '/livox/imu'
-ext_imu_publish_rate  = 500.0      # Hz, MCU 数据源 500Hz, 逐采样发布
-```
+## 编译
 
----
-
-### 5. 启动脚本
-
-| 脚本 | 用途 | 用法 |
-|------|------|------|
-| `start_agras.sh` | 一键启动：Livox 驱动 (含外部 IMU) + FAST-LIO | `./start_agras.sh` |
-
-#### FAST-LIO 配置 (agras_mid360.yaml)
-```yaml
-extrinsic_est_en: true              # 在线外参估计
-extrinsic_R: [0, -1, 0,             # IMU→LiDAR 旋转矩阵
-              1,  0, 0,
-              0,  0, 1]
-time_sync_en: false                 # 设为 true 让 FAST-LIO 自动估计时间偏移
-```
-
----
-
-## 编译 & 运行
+环境：Ubuntu 22.04 / ROS2 Humble，或提供同样环境的 Docker 容器。
+在工作区根目录执行（目录名不同可替换 `src/Agras_Driver`）：
 
 ```bash
-# 编译 SDK
-cd Livox-SDK2 && mkdir -p build && cd build
-cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5
-make -j
-sudo cp sdk_core/liblivox_lidar_sdk_static.a sdk_core/liblivox_lidar_sdk_shared.so /usr/local/lib/
-
-# 编译全部 ROS2 包
-cd ../.. && source /opt/ros/humble/setup.bash
-colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
+source /opt/ros/humble/setup.bash
+rosdep install --from-paths src/Agras_Driver --ignore-src --rosdistro humble -y
+colcon build --symlink-install --executor sequential \
+  --cmake-args -DCMAKE_BUILD_TYPE=Release
 source install/setup.bash
-
-# 一键启动（自动开两个终端）
-./start_agras.sh
-
-# 或手动分别启动：
-# 终端1 - 驱动
-ros2 launch livox_ros_driver2 msg_AGRAS_MID360_launch.py
-
-# 终端2 - FAST-LIO
-ros2 launch fast_lio mapping.launch.py config_file:=agras_mid360.yaml
 ```
 
-> **启动后务必静止 3 秒**，让 FAST-LIO 完成 IMU 初始化和陀螺偏置估计。
+SDK 随 `livox_ros_driver2` 自动从源码编译，安装在该包的 `install` 前缀内。
+无需单独安装 SDK、复制 `.so`、运行仓库启动脚本或按 CPU 架构选择预编译库。
+内存较少时可先 `export MAKEFLAGS=-j1` 限制单个包内的编译并行度。
+目标工作区若已有同名 `livox_ros_driver2`、`fast_lio` 等包，需要先选择保留哪一份实现，避免重复包名。
 
----
+## 启动
 
-## MID360 → QGC 点云推流（mid360_udp_bridge）
-
-将 MID360 点云经 UDP 推流到 QGroundControl（FCCU 分支）「分析 → MID360 Point Cloud」页面，实现类似 RViz 的实时点云显示。
+每次新开终端先加载 ROS2 与当前工作区环境。下列模式分别运行；切换前关闭上一种模式。
 
 ```bash
-# 与驱动一起启动（QGC 所在设备 IP 192.168.x.y，留空则广播）
-./start_agras.sh stream --gcs-ip=192.168.1.100
+# 单独启动雷达，默认使用内置 IMU
+ros2 launch agras_bringup driver.launch.py
 
-# 或手动启动桥接节点（需要先启动驱动）
-ros2 launch mid360_udp_bridge mid360_udp_bridge.launch.py \
-    gcs_ip:=192.168.1.100 voxel_size:=0.2
+# 雷达 + RViz 原始点云
+ros2 launch agras_bringup view.launch.py
+
+# 雷达 + FAST-LIO2 + RViz
+ros2 launch agras_bringup fast_lio2.launch.py
+
+# 雷达 + LI-Init 标定 + RViz
+ros2 launch agras_bringup calibration.launch.py
 ```
 
-- QGC 页面默认监听 **UDP 57120** 端口，打开页面即自动开始接收；
-- 桥接节点默认体素降采样 0.2m、限帧 10Hz、每帧最多 2 万点；
-- 注意：雷达网卡 IP 固定为 `192.168.1.20`，推流走的是地面站链路网卡，请确认网络路由可达。
+常用参数：
 
-详见 `mid360_udp_bridge/README.md`。
+```bash
+# 无显示器
+ros2 launch agras_bringup fast_lio2.launch.py rviz:=false
+
+# 替换雷达网络配置（真实设备仍需遵守固件固定地址）
+ros2 launch agras_bringup driver.launch.py config:=/absolute/path/AGRAS_MID360_config.json
+
+# 替换算法参数，指定可写输出目录
+ros2 launch agras_bringup fast_lio2.launch.py \
+  params_file:=/absolute/path/fast_lio2.yaml output_dir:=/absolute/path/results
+```
+
+各算法包也保留独立入口（需要另行运行驱动）：
+
+```bash
+ros2 launch livox_ros_driver2 driver.launch.py
+ros2 launch fast_lio mapping.launch.py
+ros2 launch lidar_imu_init agras_mid360.launch.py
+```
+
+`fast_lio` 是现有 ROS 包名，`fast_lio2.launch.py` 明确表示组合运行 FAST-LIO2。
+当前功能为激光惯性里程计及点云建图；未包含回环优化或完整 Nav2 导航。
+
+## 话题和坐标系
+
+默认 `xfer_format:=4`，一个驱动从同一帧发布：
+
+| 话题 | 类型 | 用途 |
+|---|---|---|
+| `/livox/lidar` | `livox_ros_driver2/msg/CustomMsg` | FAST-LIO2、LI-Init |
+| `/livox/lidar/pointcloud` | `sensor_msgs/msg/PointCloud2` | 原始点云显示 |
+| `/livox/imu` | `sensor_msgs/msg/Imu` | 内置或选定的外置 IMU，角速度 rad/s、加速度 m/s² |
+
+单格式兼容模式：`xfer_format:=0` 在 `/livox/lidar` 发布 PointCloud2；
+`xfer_format:=1` 在该话题发布 CustomMsg。组合入口固定使用双格式，避免改换消息类型。
+
+原始雷达与 IMU 默认 frame 为 `livox_frame`。FAST-LIO2 输出世界系 `map`、IMU 本体系 `body`，
+发布 `map → body → livox_frame`，雷达到 IMU 的外参来自算法参数。
+原始查看模式的 `view_origin` 仅为 RViz 提供显示参考，不会在 SLAM 模式发布。
+日志、地图及标定结果默认保存到 `~/.ros/agras/fast_lio2` 或 `~/.ros/agras/calibration`，
+可通过 `output_dir` 指定；不再写入源码目录。地图保存默认关闭，按参数启用。
+
+## 定制雷达与外置 IMU
+
+Agras 配置：雷达 `192.168.1.10`，主机雷达网卡 `192.168.1.20/24`，
+UDP 命令/推送 `60000`、点云 `60001`、IMU `60003`。启动文件不会自动配置网卡。
+驱动保留 Agras 适配与 50 m 距离过滤。SDK 来源与本地修改见 `livox_ros_driver2/third_party/README.md`。
+
+供电、极性和定制 Type-C 针脚必须按实际设备可靠定义确认；该接口不可按普通 USB-C 接入。
+
+外置 IMU 可由驱动参数 `ext_imu:=true ext_imu_port:=/dev/ttyIMU` 启用。
+组合运行外置 IMU 时还需提供对应算法外参配置，例如包内 `fast_lio/config/agras_mid360_ext.yaml`，
+并确认单位、安装方向和时间同步；默认仍为内置 IMU。
+`fc_ext_imu_verify` 的独立验证入口仍保留，需要实际 MAVROS 数据源，本集合不自动启动飞控链路。
+
+## Docker（可选环境）
+
+根目录 Dockerfile 只准备开发依赖，源码与工作区在容器中照常编译：
+
+```bash
+docker build -t agras-ros2-dev:humble src/Agras_Driver
+docker run --rm -it --network host \
+  -v "$PWD:/ws" -w /ws agras-ros2-dev:humble
+```
+
+容器内执行相同的 `colcon build`、`source install/setup.bash` 和 `ros2 launch`。
+上述示例适合无图形入口（`rviz:=false`）；RViz 还需按本机环境传入显示连接和认证。
+源码支持在目标平台原生构建；ARM64/树莓派的实际编译与运行状态以验证记录为准。
+
+## 开发验证
+
+`tools/tests/` 只供开发时做离线回归，不是用户编译或启动的前置步骤。
+运行前加载已编译工作区；使用回环配置和独立 ROS_DOMAIN_ID，避免干扰其他 ROS 会话。
+RViz 自动显示测试另需 Xvfb；常规启动不需要它。
+历史源码说明和旧入口参考保存在 `docs/`，不安装为当前 launch。

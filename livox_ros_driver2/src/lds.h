@@ -27,6 +27,7 @@
 #ifndef LIVOX_ROS_DRIVER_LDS_H_
 #define LIVOX_ROS_DRIVER_LDS_H_
 
+#include <atomic>
 #include <map>
 
 #include "comm/semaphore.h"
@@ -75,7 +76,7 @@ class Lds {
   double publish_freq_;
   uint8_t data_src_;
  private:
-  volatile bool request_exit_;
+  std::atomic<bool> request_exit_;
 };
 
 }  // namespace livox_ros

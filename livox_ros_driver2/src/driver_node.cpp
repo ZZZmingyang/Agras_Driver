@@ -37,8 +37,10 @@ DriverNode::~DriverNode() {
   if (ext_imu_bridge_) {
     ext_imu_bridge_->Stop();
   }
-  lddc_ptr_->lds_->RequestExit();
   exit_signal_.set_value();
+  if (lddc_ptr_ && lddc_ptr_->lds_) {
+    lddc_ptr_->lds_->RequestExit();
+  }
   if (pointclouddata_poll_thread_ && pointclouddata_poll_thread_->joinable()) {
     pointclouddata_poll_thread_->join();
   }

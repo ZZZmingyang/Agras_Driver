@@ -1,0 +1,1357 @@
+{
+  "repository": "https://github.com/A908gao/Agras_Driver",
+  "source_commit": "a8ec100cd369bb038e586bf3617fd169f56db0c1",
+  "sdk_tree_sha1": "d71559871e1eab9961e11ff30eb0dc0d28f116a5",
+  "ros1_branch_has_identical_sdk_tree": true,
+  "verified_sdk_file_count": 222,
+  "driver_sdk_api_declarations_checked": [
+    "LivoxLidarAddPointCloudObserver",
+    "LivoxLidarRemovePointCloudObserver",
+    "LivoxLidarSdkInit",
+    "LivoxLidarSdkUninit",
+    "SetLivoxLidarBlindSpot",
+    "SetLivoxLidarDualEmit",
+    "SetLivoxLidarInfoChangeCallback",
+    "SetLivoxLidarInstallAttitude",
+    "SetLivoxLidarPclDataType",
+    "SetLivoxLidarScanPattern",
+    "SetLivoxLidarWorkMode"
+  ],
+  "sdk_cmake_listed_cpp_paths_checked": 36,
+  "compile_test": "Not performed: current Windows environment has no configured Linux/ROS2 runtime.",
+  "hardware_test": "Not performed: no connected Agras lidar.",
+  "files": [
+    {
+      "path": "Livox-SDK2/.gitignore",
+      "git_blob_sha1": "6a8bc10aebbefffec65195982b7cbf18c870b3ae",
+      "sha256": "357feefef3e3f5de19d5e252eb97bcc6e572e461a3f8aa18ba260d6912363baf",
+      "bytes": 13
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/FastCRC/FastCRC.h",
+      "git_blob_sha1": "f1821f529d760a5a6488da63e00e9e09273a7c53",
+      "sha256": "8a33e872e2a1426f6f3d69bb2c2872ee3402c70d8c6b1394f2c093f8ecc55c22",
+      "bytes": 7415
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/FastCRC/FastCRC_tables.h",
+      "git_blob_sha1": "bcd05e8d61b2a74f1f4f4beac8f2bad3b6a4b90c",
+      "sha256": "54cc42cdc240e84347d07e61af83c6bed38c7ceac2f15a4847cfa11e509bfbac",
+      "bytes": 88526
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/FastCRC/FastCRChw.cpp",
+      "git_blob_sha1": "efd180a007a76d80c81780f4bb1cc929cb46e36c",
+      "sha256": "1eab1fe68bf64cf937759e81c4ae69c2f1a929769a6651b595658e3e9af49117",
+      "bytes": 16870
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/FastCRC/FastCRCsw.cpp",
+      "git_blob_sha1": "fc371b8e3ef64f193704c52ff943b437dfdaf75a",
+      "sha256": "7fe0edc04442a29a0b076b4d09c7b250d2c4f89bba1bfa6a43f2493d33524937",
+      "bytes": 13727
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/FastCRC/LICENSE.md",
+      "git_blob_sha1": "def7a3344d9ee5cd81133ba0aa695869e32ed5df",
+      "sha256": "2cdf510c5ad25585baf540ce3867879baaa80238c0bb29cdbe661435e6ea1c3d",
+      "bytes": 1071
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/FastCRC/README.md",
+      "git_blob_sha1": "6f17970b032bd79ec926e8742c53b070d51481a6",
+      "sha256": "a05479bb2028ad8d4e664295a5aec7ab78a6c3aa3292a461800c6f3a7fdbaf13",
+      "bytes": 1546
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/allocators.h",
+      "git_blob_sha1": "03010d534734322f4e0893f45b8f9f4e30d35b91",
+      "sha256": "49b554ebfc2369438fd9365b28f0453485d936437847de31a7bb770001abca55",
+      "bytes": 10437
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/cursorstreamwrapper.h",
+      "git_blob_sha1": "045ddb8551c7a87d1306662d32b09b3e84ab26b3",
+      "sha256": "de1a52b674c998a7581f9cb69c9310757f825595c3fef985d5d153f7ac1b6aaf",
+      "bytes": 2230
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/document.h",
+      "git_blob_sha1": "27addb76ba1874648655bf67d4284ff43f49b136",
+      "sha256": "6afae6a8825b03b4c6baa42a513e5a5242ac96b4c95968c07ee8bda8163eb3ff",
+      "bytes": 117966
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/encodedstream.h",
+      "git_blob_sha1": "74ef4ca0cc594748a2b1c4e2bfec1316174bccbf",
+      "sha256": "4bb5e4853943d5ead467e46b5313d95aa23645018cda93e7907a934a06cfbb26",
+      "bytes": 10634
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/encodings.h",
+      "git_blob_sha1": "34521cc45ee29574cb3b766fe2b89e0ce0ffc3b7",
+      "sha256": "0201c664e471c615b5cd27d2e981cf8b21ac9c210bdf108062fb2fd9d493a501",
+      "bytes": 29827
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/error/en.h",
+      "git_blob_sha1": "a08145d18cca835927585449e8bfe7c5ec297213",
+      "sha256": "484dcd32c0b35b7a81561740fad970402c0ffcec44311381a2fb265cfe5e273c",
+      "bytes": 3739
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/error/error.h",
+      "git_blob_sha1": "4814b69e55cfc28118edda83a6a9247a1da49341",
+      "sha256": "aa9b40b61754b227248b4b092331dbd5721ef6565d962e4c225c6c1e7974817e",
+      "bytes": 6472
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/filereadstream.h",
+      "git_blob_sha1": "250aabb31d164a6360af23be837f26ff95c69718",
+      "sha256": "8c7d282eb32897969430f5a94178cab238433e25fa139ee74eda87eb1d42690a",
+      "bytes": 2961
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/filewritestream.h",
+      "git_blob_sha1": "f6defc120eed5b7f4821ef123cb2538436f1fd05",
+      "sha256": "1db49a4cd9038f2670667e5900f346d231a0eece06ac1817f33feb63f33545b9",
+      "bytes": 3073
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/fwd.h",
+      "git_blob_sha1": "cafb48e6ea10bbd53e241f67347161c6f248b6da",
+      "sha256": "2a0e024b8b6b87d1d3f50d1d0dd4656124c161fea88406265d097d613498854e",
+      "bytes": 4120
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/internal/biginteger.h",
+      "git_blob_sha1": "b60e006a18ccb2399406902269cd696ad89b60bb",
+      "sha256": "0be8375c2d39bc1f8f57b755a26569db9ed35c86d066b294911690513786afb3",
+      "bytes": 8296
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/internal/clzll.h",
+      "git_blob_sha1": "8cb8b8ae3b6af075768a5c518003a5b629695d4d",
+      "sha256": "93d71c879a805a8c17cfd8913cf1add4d2f25407bbf668abe1dcca6e40ebc746",
+      "bytes": 2035
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/internal/diyfp.h",
+      "git_blob_sha1": "bed2989352b2ad128ea695a69851026f08a51a6e",
+      "sha256": "f2c45af9e73a451e5472e5dd10a7672085e9a3504d1f3ab864a5b9cc7445c1eb",
+      "bytes": 11387
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/internal/dtoa.h",
+      "git_blob_sha1": "b64a79dafe02f197708907a7eaf93e7658436f3f",
+      "sha256": "965deca8d1382c30db9e0a1d51200a4934bfe032eda3dcde10d4bdb39817c05a",
+      "bytes": 7724
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/internal/ieee754.h",
+      "git_blob_sha1": "246c4acc7effbe3d615dc65d3ba78e99e37a4710",
+      "sha256": "a1b4a88d5e0f633e99c7d68a34fdebc6289e6be0f0cfba452a7793166d7ea970",
+      "bytes": 2990
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/internal/itoa.h",
+      "git_blob_sha1": "ec1174c669adf21c185bfeead6a3f9417d682b87",
+      "sha256": "45c96bab2327aee5ff999167fac8f768a3a9e1003142fa68e3aee50b54d93e12",
+      "bytes": 9272
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/internal/meta.h",
+      "git_blob_sha1": "598f576f60f24cede1cb9d3070d2ca89ffc2150a",
+      "sha256": "a20dad578c7d714ff04029f04719df19be5835c30bf9c7028d226e67d065bf0b",
+      "bytes": 6731
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/internal/pow10.h",
+      "git_blob_sha1": "6f15f747a2ae490b224238fa90065aaa841cbf21",
+      "sha256": "7a7693969c936ddb6d036467a0f6b53def076922bb838d250eb40f12b2e2ce0e",
+      "bytes": 3957
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/internal/regex.h",
+      "git_blob_sha1": "19f49dacfcb88cdb359aa7af642820c3908c1226",
+      "sha256": "624cf078b8179a198374eebe94331aa2d8b70b08997f4e270ccfaccc90fd09b2",
+      "bytes": 23238
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/internal/stack.h",
+      "git_blob_sha1": "bf80503b3ad7578c43c959857ccc3bdef83c4dc8",
+      "sha256": "46c4f98ff2acce64d1280458dd1224aaee9a9035eebd3462cdf31ee25a13702e",
+      "bytes": 6805
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/internal/strfunc.h",
+      "git_blob_sha1": "9024b2f44a6bc7ffbb3a6f7b1c4a81d07849024b",
+      "sha256": "e083b68f7bf3570653fce1e3ea0a573a75745a096dd80194e1a2fde4d7695bb8",
+      "bytes": 2184
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/internal/strtod.h",
+      "git_blob_sha1": "ea7ae43bde16d4807ef56d134317926f7042ac80",
+      "sha256": "2134c15ad40b9584ecb8e1a7f6163277a6d783574b3fb08574f88ab769b91751",
+      "bytes": 8656
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/internal/swap.h",
+      "git_blob_sha1": "db41b186d4b9b1bc1a973f0be6aec123580e8a7a",
+      "sha256": "48ecb57c3b2ca955ad3cccdfff03835be495a56c9c5da07ab9c02f488b7d7fe1",
+      "bytes": 1421
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/istreamwrapper.h",
+      "git_blob_sha1": "b9663b023a9edfec93e631fd3416c65fd5aed217",
+      "sha256": "b3c03a5826b8d8c9dfcef64eb09d8ec4a955e0c6edd38d9c3a127dbca53ec2dc",
+      "bytes": 4112
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/license.txt",
+      "git_blob_sha1": "7ccc161c84b243687498a0dae5043c1da6173ac4",
+      "sha256": "a140e5d46fe734a1c78f1a3c3ef207871dd75648be71fdda8e309b23ab8b1f32",
+      "bytes": 5152
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/memorybuffer.h",
+      "git_blob_sha1": "a827d6a46c361bf8cd82bb90208bc3b212c3152d",
+      "sha256": "cf661606aa41bee3466cee20174bc7454210e8aabac929b1d8e9e189fef601ab",
+      "bytes": 2573
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/memorystream.h",
+      "git_blob_sha1": "f542ece34c8e9426e64440ea13f161c66025877b",
+      "sha256": "8dd07eb66381de95a69c9cadce537d76c0349f913cfe183ab6243c54863c4dcf",
+      "bytes": 2673
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/msinttypes/inttypes.h",
+      "git_blob_sha1": "bc32dade290e9f87e6b296ed10dd061dfafa5ab3",
+      "sha256": "92f53d3ba0cdebaeb20a52893f89d0c29aae5111a3a8bb555eabdd8c96e3244f",
+      "bytes": 7824
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/msinttypes/stdint.h",
+      "git_blob_sha1": "8fd065582c20b7bcda8bbf65119b137d065a7a2b",
+      "sha256": "515ff5e244372892293c20bbfe6a5b3dcca7265442941df31dcebdfbe2a828fe",
+      "bytes": 9151
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/ostreamwrapper.h",
+      "git_blob_sha1": "56c50a79eb395c9f8369e04bc743543cc72e08a4",
+      "sha256": "366d953184777b0de0a102ef38cf56f9fc766422246f16be9af2dad8ad787054",
+      "bytes": 2342
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/pointer.h",
+      "git_blob_sha1": "218dd6cbd2dcaab12e71dcce53c5ab9f6c135a43",
+      "sha256": "d74ab63c76a99a5a92418d2420cc733c22767b6d9e9a6f989689940de4f7c478",
+      "bytes": 60230
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/prettywriter.h",
+      "git_blob_sha1": "f24bd0f97c7b8229fcffdf7e87f3e3439eba06b7",
+      "sha256": "e8495e521c5d726c7e2ff59b1f7eb6f08a1e0298055d1fbbc4f29f08d736360d",
+      "bytes": 10253
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/rapidjson.h",
+      "git_blob_sha1": "7af85e871219969fa14b034292939f5fad4c05ff",
+      "sha256": "22ffbcb054cecc5180bdb72478ab32598c9aa40421322f17923809acdcf99629",
+      "bytes": 24293
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/reader.h",
+      "git_blob_sha1": "3a7203a88feed8ccc6662ce5b4b720bd2d8fd158",
+      "sha256": "291f6d315a3617c9bd83d8b2836f9dc1e45a2a9770dcb0745f9eaaa603b715a6",
+      "bytes": 89290
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/schema.h",
+      "git_blob_sha1": "b9dc8c8b31c8fcc0ed73b85d922d7effe83bb7b3",
+      "sha256": "473b44fcb9f88d2fa7439e1c9f86899deae44205323a7ba7709e6b4b513f01fa",
+      "bytes": 101259
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/stream.h",
+      "git_blob_sha1": "a446c1a71805c4b60260d55f876b4a2706eafe5b",
+      "sha256": "58e37336dafded31177eb2381f0d553de8a5fd33c8580873de32b0e467d85677",
+      "bytes": 6694
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/stringbuffer.h",
+      "git_blob_sha1": "42b2bb1e2d7e9c76f98ed76604552c28afcd42b8",
+      "sha256": "8434f52ca786bf876b3d3d693ce8e2d399325ddf891e0437becd41ed590806e9",
+      "bytes": 3984
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/rapidjson/writer.h",
+      "git_blob_sha1": "69f9b058a9ad52d7b5ceaee712e8afd9c7ff083e",
+      "sha256": "b42eca28a42d7b3806aaf691ee921accabcf911be6728c35fa04e14162a72bdf",
+      "bytes": 26178
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/LICENSE",
+      "git_blob_sha1": "806124de2f6fdf25409773f822225891957702b4",
+      "sha256": "9eb46fbd9cbdb0793e496ab744aa2e290b4e39825a2da5cba3ba6fa36bb25683",
+      "bytes": 1120
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/async.h",
+      "git_blob_sha1": "971becd700023b5abe6db3e74fc8527fa6ef74d6",
+      "sha256": "1bde72990e5a257dc0e504dddacb3b87e1917022b500a27b3a7f6291be605e66",
+      "bytes": 3082
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/async_logger.h",
+      "git_blob_sha1": "a7ecb787377d8de9c431da418aedfea9a10ec10c",
+      "sha256": "a106c25916b1cd75b93213c6bbf7901a68452d01ed807d7a9e86cabe98a895ee",
+      "bytes": 2323
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/common.h",
+      "git_blob_sha1": "dd9a47853d6017d492302f3024e5ae5b320ab1d2",
+      "sha256": "15b198046a43cbade6128cde15cdc92086628108aefdd23dc79411f99115c506",
+      "bytes": 6046
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/details/async_logger_impl.h",
+      "git_blob_sha1": "aafcae6568cd0468dff3d1dc39e9dd1d88738b1e",
+      "sha256": "747c2c65518816ef1843ec0fc97e54cc44bea3826997f1b2942979a0ed3f5787",
+      "bytes": 2989
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/details/circular_q.h",
+      "git_blob_sha1": "b01325bb751604819dab686bcc2a19ad746668bc",
+      "sha256": "fc7d426985bc3a1152820712799531896a22fdfce37a37de4da094315a179dd3",
+      "bytes": 1531
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/details/console_globals.h",
+      "git_blob_sha1": "e2afb6bf0107e7dea4956f20ac811017d70396c3",
+      "sha256": "c1aa7ca8aaa4e302409c7346c1b6151fc9e8bb7c7c854bb7f26430a084956caa",
+      "bytes": 1195
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/details/file_helper.h",
+      "git_blob_sha1": "8c1132d9c5e9ff02fa27b43ceeb2cc9a887f4141",
+      "sha256": "b936cec4ef1befe70e3ea5c6f681bca0f5ed86e034937bb3472b66e4cfa31fa7",
+      "bytes": 3892
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/details/fmt_helper.h",
+      "git_blob_sha1": "d76aac452c2f6f88195df83594aef949c3e96ecf",
+      "sha256": "e8e83597b5ba80020a469a833ffd0ecd7025d64079a2df9754d0dda0685e9d18",
+      "bytes": 3444
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/details/log_msg.h",
+      "git_blob_sha1": "69422ba378a410386904012121a5f4b5cb9bfbe2",
+      "sha256": "3b0c767bcd002f9343dd043ea33ad1aec7b569671e81df0665162979daa7d569",
+      "bytes": 1269
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/details/logger_impl.h",
+      "git_blob_sha1": "d44652b509d6bc7e34e512f522960455acbf98a3",
+      "sha256": "eb40321c51c82b889b7f439a7fe5a3970382a77900359adf0a6abdee147196e4",
+      "bytes": 11499
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/details/mpmc_blocking_q.h",
+      "git_blob_sha1": "ca789fc660e11554410f81e422c519760234e7b2",
+      "sha256": "303cb6f41b0e36ed663e6f47ad762c201fe715a9ac97aa448db3caabfb97b02d",
+      "bytes": 3437
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/details/null_mutex.h",
+      "git_blob_sha1": "3f495bd98a36ad48174a0e0e51acf73f670d9952",
+      "sha256": "fda252aef2f7eedf1dfe568753ae9a11da0c5179752350ce667db85ee9151602",
+      "bytes": 683
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/details/os.h",
+      "git_blob_sha1": "646805e608c4563ed2cc73d10c9b3b24d7c71bc7",
+      "sha256": "d72824ff220aec056bc355cbe65394fafdb8804fbd657512d70db00b04264230",
+      "bytes": 10605
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/details/pattern_formatter.h",
+      "git_blob_sha1": "c0ad86e8eb9366898db4406888b2c94e935d8523",
+      "sha256": "f17b20dc98f8105ffc0ff11cb024e29e43852b7cc083115d2c94a5ef834637ff",
+      "bytes": 39208
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/details/periodic_worker.h",
+      "git_blob_sha1": "fa6488d17d6d0d8f6464432613f64ee7c2e8cc8f",
+      "sha256": "f98bb0dc13b33a943dcb691cf0a4bbbb7376688e72da22de98c4efd88386f1cb",
+      "bytes": 1844
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/details/registry.h",
+      "git_blob_sha1": "ccd539557dff4b59ff132e46f8dd30f6afc1de0b",
+      "sha256": "5ac3d6cb05c44e85b191348f6c9c49ffe614fa56bcf9e53e3bc4c9f9a0b0fbbc",
+      "bytes": 8086
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/details/thread_pool.h",
+      "git_blob_sha1": "35578971ab369cea7317909c2f2049943b6456c0",
+      "sha256": "ccbb96ac813a6e8d137a73186cd02419a32bfa9e18436ee6c90dcfcd9f1e7668",
+      "bytes": 6420
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/fmt/bin_to_hex.h",
+      "git_blob_sha1": "3523380204e096681830ae22993fd19718976eee",
+      "sha256": "4f35606238b6cbdf4252df16b7fb3a0bb3a2b8f47613c301fc9cbcdbb71e0020",
+      "bytes": 4360
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/fmt/bundled/LICENSE.rst",
+      "git_blob_sha1": "eb6be6503e93cc384f912841c7c7cbc65e5aa709",
+      "sha256": "560d39617dfb4b4e4088597291a070ed6c3a8d67668114ed475c673430c3e49a",
+      "bytes": 1310
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/fmt/bundled/chrono.h",
+      "git_blob_sha1": "209cdc25adadbce5fc318fc7d385c457eaa14e3e",
+      "sha256": "65b9c60e7087d6777117607c4aa0551f85385b5e2fb1fbe7f32dca2861b16265",
+      "bytes": 13284
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/fmt/bundled/color.h",
+      "git_blob_sha1": "5db861c9331dbc7b521e0960bc7ac7698780eff9",
+      "sha256": "b975e869f28357e684de70668a8e7940a90b4b45d31aa5cbed44b8578ece82da",
+      "bytes": 21968
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/fmt/bundled/core.h",
+      "git_blob_sha1": "50b79351536e4a23afd824163bb7eb0792c9c004",
+      "sha256": "907c67c6a2065fcc0351ce963ac43033aa82e12b1db5d8b0f8105a706663bd5e",
+      "bytes": 47459
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/fmt/bundled/format-inl.h",
+      "git_blob_sha1": "552c9430331696916c1114170a2a0e085bcc8519",
+      "sha256": "7a2e969f2f0c26136dcab196231c6a7fbebefcd793e51cd2005f62ebd1c11952",
+      "bytes": 32309
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/fmt/bundled/format.h",
+      "git_blob_sha1": "1bb24a529687c561c8750c63bc72f57e1b8ddbfa",
+      "sha256": "234b9186b0a873b6229aa266abfd2ebd213e023a2993929149eaa2495ad40592",
+      "bytes": 109393
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/fmt/bundled/locale.h",
+      "git_blob_sha1": "8e021bc49bf1d619fe86fb36507e891f230bb180",
+      "sha256": "f49f539f85b43e4cc78926fee401d5981d191d958c642ef5205fc0cce30c1fdd",
+      "bytes": 2782
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/fmt/bundled/ostream.h",
+      "git_blob_sha1": "84b31cc5547ff8004d962cc308241d6db8dbc36e",
+      "sha256": "1d9425bc01a205e79fdf7cb6fdbb92e3670f7a0173a5a431a7ff355eba5bcc28",
+      "bytes": 4771
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/fmt/bundled/posix.h",
+      "git_blob_sha1": "f4e3fad7ef7bde38d780c539221d15ccc94a7b59",
+      "sha256": "aae4dfc21228375ecdc9880cb0d6b0d1c7137a8265414d1a72e13b917242f900",
+      "bytes": 8820
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/fmt/bundled/printf.h",
+      "git_blob_sha1": "6f2715d9fe7cb3cfc16ce871d323216d326fe40d",
+      "sha256": "e359d9d89d903bb3ce652134e2a02013d1b39b612b68811f045386ee4e725254",
+      "bytes": 25813
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/fmt/bundled/ranges.h",
+      "git_blob_sha1": "3672d4ca81d0fc6a7787bf92db34f9a8145b9ebe",
+      "sha256": "6c6b80dfda0fa4844dfbdb7552f5236f69822c71f4c8338d59500c9bac9342f3",
+      "bytes": 9069
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/fmt/bundled/time.h",
+      "git_blob_sha1": "fe798916f18289fb94d5d5950e412b0221812b91",
+      "sha256": "6dc3f198b82abfb4051f99a47c6278366da50a00298557fc4feb105e0a7c82b3",
+      "bytes": 4311
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/fmt/fmt.h",
+      "git_blob_sha1": "616af0cc7812b0554311aec98a79dbd7b3820fdd",
+      "sha256": "ec8eb1c65986300dfebb23e52e8d89e9c3b77496093af04a7fe4f8c994fdbaf7",
+      "bytes": 534
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/fmt/ostr.h",
+      "git_blob_sha1": "9902898f84a80a55739c41edc2dc1602e0d6f573",
+      "sha256": "58b853c076466464f85a7095119697ea162e7fc15a1760c1cda54c5b121856d5",
+      "bytes": 371
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/formatter.h",
+      "git_blob_sha1": "a7ef6b8b5ae6f0dd6097875ef0c1cab5d8c648d2",
+      "sha256": "a8c04ae8f6b31f472159e1e2fa1bce0199efbacd1128333145ad252e3e289d96",
+      "bytes": 436
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/logger.h",
+      "git_blob_sha1": "ec06828fbaad33ec35226edb731730474b7d1e73",
+      "sha256": "a247881b6a6c108abcbe8e33a8a422d33991620fc9c3f7e450f903e52f730ffa",
+      "bytes": 5771
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/sinks/android_sink.h",
+      "git_blob_sha1": "ae7f77336804f6afa75b201f9585a08acb72417d",
+      "sha256": "91c2e6b0c38583c10f3b758b27f31f3d2da25101215a8f544a650969775c2c95",
+      "bytes": 3292
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/sinks/ansicolor_sink.h",
+      "git_blob_sha1": "1cb797ba4f19523f300001ee0ebf842c89073c34",
+      "sha256": "ce74e2da37ec0b4f5642a16da264488452ed0b3b677fae55c72b6f01ea417708",
+      "bytes": 5248
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/sinks/base_sink.h",
+      "git_blob_sha1": "22595182b3168c6ca1c4da025f48e18fc57c4e5c",
+      "sha256": "69288b1f3b71a0b25969bf598ca38c9f7f49c2ca3adfc5a68888219e950851ce",
+      "bytes": 1738
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/sinks/basic_file_sink.h",
+      "git_blob_sha1": "facc7209a4ac653a72e1fb575457112f9ab57b7d",
+      "sha256": "5509410659c581d03f1acca97270505e1311cfdaa9218ca4ac8c73314a7cdf4a",
+      "bytes": 1827
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/sinks/daily_file_sink.h",
+      "git_blob_sha1": "08392c16ee9e63fa18b3a6ad0472a0ed62e34506",
+      "sha256": "90d15da6f6a61168ed976f0022fa967a8b9b3f0169e3967f0ec40cdafa713459",
+      "bytes": 4281
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/sinks/dist_sink.h",
+      "git_blob_sha1": "44de3913f34fc75d80fd66151eea20c4de582bdf",
+      "sha256": "1f265bac52c7adc57080a31540d98cbe23efaa2fda62c7c74864a7590b8bb34a",
+      "bytes": 2233
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/sinks/msvc_sink.h",
+      "git_blob_sha1": "f06c16c7508eec80f63d308481af62bdb9db70ca",
+      "sha256": "4f2e85966da04efad01742197fb9d59c83e8812a8dec0454aa95d92e31fe0439",
+      "bytes": 1034
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/sinks/null_sink.h",
+      "git_blob_sha1": "54f322c45f121023996852b7242a9883bc8aa35d",
+      "sha256": "ff22009be51101b5d150f10dc3955be12045538e98a3d0022d94110712d8179a",
+      "bytes": 1175
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/sinks/ostream_sink.h",
+      "git_blob_sha1": "22e377b6ef55b5895e203043288d4196dfcb4510",
+      "sha256": "a59c8b69c4a656a87980af04a0dd912c327c6032543d23f8825575bef01a95f3",
+      "bytes": 1276
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/sinks/rotating_file_sink.h",
+      "git_blob_sha1": "ae0f70f6828e334c86e83f85f70e07efa2abee3b",
+      "sha256": "6d637caf383a15afa8c1b1e67ad04ba71bee26e8c25b2ac02c6ab7c62ead8f6b",
+      "bytes": 5260
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/sinks/sink.h",
+      "git_blob_sha1": "d83252333c515e63fd57b4d033d7193215bab795",
+      "sha256": "507198c460b087751dbb69b49adf388411af5216a06459ec94664ae00f8b94a4",
+      "bytes": 1364
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/sinks/stdout_color_sinks.h",
+      "git_blob_sha1": "5accda4474186525abdba6a1f371b805fbdfd399",
+      "sha256": "6b9047075b3682258349e8f6359d77feebb0fb04e27520864fe4b97f984dbbf2",
+      "bytes": 1659
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/sinks/stdout_sinks.h",
+      "git_blob_sha1": "bf8e9790893e649ff7f53939596cfdca38ecd1ec",
+      "sha256": "dfacafbedeaffab9d18a66229c7c086e33fc6bad707e888beb76f0930b6d44ef",
+      "bytes": 2867
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/sinks/syslog_sink.h",
+      "git_blob_sha1": "c3bcd844af770e2d7c2404d6087f04885980e1d9",
+      "sha256": "199ecd66edcfadf8b2a5936e277acad955d22f42d98019197167d75b8db78093",
+      "bytes": 2963
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/sinks/wincolor_sink.h",
+      "git_blob_sha1": "1fdf8c566f25ecfccec71a91f2c015f7a3454a10",
+      "sha256": "31182b56a80bbf17d784e0498a3de2ac19c0fbdac7d377a505255068a001b9cd",
+      "bytes": 4844
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/spdlog.h",
+      "git_blob_sha1": "20ff24be55f1f2f42d19ee988ffd24c113aaea0e",
+      "sha256": "33b8c0f738f2ade4c942b1f87ade7030e732afc8d5638e9bbb7d507ac420e9a2",
+      "bytes": 10861
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/tweakme.h",
+      "git_blob_sha1": "dfcb09d2582b71964ac660f124f0f1a54b10a3b4",
+      "sha256": "4ce1f47e5f900739036d4755b14e58f0305aed19ef428b78600665218524107f",
+      "bytes": 6780
+    },
+    {
+      "path": "Livox-SDK2/3rdparty/spdlog/spdlog/version.h",
+      "git_blob_sha1": "87a68bd18cbfca468d4bb4fb5443cebe11585095",
+      "sha256": "23681d463577afc11519160c14cd0110630e9d03f3115e696462637980e845cf",
+      "bytes": 305
+    },
+    {
+      "path": "Livox-SDK2/CHANGELOG.md",
+      "git_blob_sha1": "fadcb271bd7ddc746cd66824c1dd88698ded2d40",
+      "sha256": "6f07d0dd61e42862351f905e17a8dc41af646b2145b0136b3b4bbb47ae4304f5",
+      "bytes": 1033
+    },
+    {
+      "path": "Livox-SDK2/CMakeLists.txt",
+      "git_blob_sha1": "05f84c5b915ec712297faa061d9eac9554e4b097",
+      "sha256": "cea3beb9763ecbbaac8ef7b6885bb9a86ea2a15eee7b54ea5d9e2704b4330925",
+      "bytes": 412
+    },
+    {
+      "path": "Livox-SDK2/COLCON_IGNORE",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "Livox-SDK2/LICENSE.txt",
+      "git_blob_sha1": "e65206abf33f09a54661ce506c43d58c8c6fd796",
+      "sha256": "8a71b3149554ec5b7df17087e63affedc4c0dbc7fb65bfe5495cdf86224fa85f",
+      "bytes": 13252
+    },
+    {
+      "path": "Livox-SDK2/README.md",
+      "git_blob_sha1": "711ec4f8431569f27b074d4a80e789ffb2ab60e7",
+      "sha256": "0c9750c8e0333b61c089afe177705a7f4f21074b0c967e2db8e278ba6fecd794",
+      "bytes": 10679
+    },
+    {
+      "path": "Livox-SDK2/include/livox_lidar_api.h",
+      "git_blob_sha1": "94c589528fb5b06e77c65ff921079a4497ef59c3",
+      "sha256": "63b27c3dfd6b4464a052a57c02a1a2f3994a0e81115082d8e9ed4283a2371d58",
+      "bytes": 23136
+    },
+    {
+      "path": "Livox-SDK2/include/livox_lidar_cfg.h",
+      "git_blob_sha1": "35d797ef5234a3e87c3734be87379e039a0fc885",
+      "sha256": "fbeb3b91897fad5b71b169e4e4f88bfb3b4b716cecb07e45aa08569cf159e9a5",
+      "bytes": 1731
+    },
+    {
+      "path": "Livox-SDK2/include/livox_lidar_def.h",
+      "git_blob_sha1": "34e9a9222de28b1bc1deceb6f6ea21216da33e4c",
+      "sha256": "4245e58b212f051e5d02181e995f830d227cdf5caa4819d0281ad0458676b7b1",
+      "bytes": 19718
+    },
+    {
+      "path": "Livox-SDK2/samples/CMakeLists.txt",
+      "git_blob_sha1": "77c05c77f12071b2e4ebf175e872681d836ebd29",
+      "sha256": "bc5344549cc6ccf249a451d7dd4acb2571acf33308dbca26ce0081086335932f",
+      "bytes": 582
+    },
+    {
+      "path": "Livox-SDK2/samples/debug_point_cloud/CMakeLists.txt",
+      "git_blob_sha1": "c94f254d7d49db145ce89f277a1ae341602477ea",
+      "sha256": "5cc2b500d40099cacd6a6f9bff231a85337e1bf9b2d87d22a088764e59d54fcc",
+      "bytes": 192
+    },
+    {
+      "path": "Livox-SDK2/samples/debug_point_cloud/config.json",
+      "git_blob_sha1": "e2034971c73a86987e87199156af5b27815ea145",
+      "sha256": "092516d76b94d0488cad6cd65616d16dbb8ce238a0c21e023bae592356294d1b",
+      "bytes": 517
+    },
+    {
+      "path": "Livox-SDK2/samples/debug_point_cloud/hap_config.json",
+      "git_blob_sha1": "d27af50b987de47dd83a05780efc176b5a3809ce",
+      "sha256": "a7aad263c1564b7c3102739cc2347409d1904708c515befd4abbb91be3fb85f5",
+      "bytes": 487
+    },
+    {
+      "path": "Livox-SDK2/samples/debug_point_cloud/main.cpp",
+      "git_blob_sha1": "958ff8bbc1ea7b0adbdfa1a08888bd980df83006",
+      "sha256": "59b5e20f8d6f06c0f74be0cc3037f357d3a39d0e7bc297858799274fdd30df51",
+      "bytes": 5246
+    },
+    {
+      "path": "Livox-SDK2/samples/debug_point_cloud/mid360_config.json",
+      "git_blob_sha1": "38ce5ecfcb5c6ee5b87a638c14908cf7aafa95a9",
+      "sha256": "c54bf627b5bf69637839f30164b1063f8a4f4d5fd21f75839ed05d4662d20a37",
+      "bytes": 498
+    },
+    {
+      "path": "Livox-SDK2/samples/debug_point_cloud/mid360s_config.json",
+      "git_blob_sha1": "63c375de247a1fa6169557b5bfc1c608e6cb97ea",
+      "sha256": "e72b7df6b76c5022b297f9865b8a14d49b001ec6e5329fb0b5fd405d9b90ef7a",
+      "bytes": 499
+    },
+    {
+      "path": "Livox-SDK2/samples/lidar_cmd_observer/CMakeLists.txt",
+      "git_blob_sha1": "503ff6f95278cee949e8e428d337db196dc057bf",
+      "sha256": "e9d3b2dbab4e9752f373606ddd71a140095d8500256a7a293522115ae4c32297",
+      "bytes": 297
+    },
+    {
+      "path": "Livox-SDK2/samples/lidar_cmd_observer/config.json",
+      "git_blob_sha1": "e2034971c73a86987e87199156af5b27815ea145",
+      "sha256": "092516d76b94d0488cad6cd65616d16dbb8ce238a0c21e023bae592356294d1b",
+      "bytes": 517
+    },
+    {
+      "path": "Livox-SDK2/samples/lidar_cmd_observer/hap_config.json",
+      "git_blob_sha1": "4f3d2472eb36b396fbe09bee40fe0b212bdb2cdd",
+      "sha256": "1d61cff146b8fb415b4aa95a7f0d6ce89f6e3989176c8b7dc5c28be59b50cbbe",
+      "bytes": 499
+    },
+    {
+      "path": "Livox-SDK2/samples/lidar_cmd_observer/main.cpp",
+      "git_blob_sha1": "20e3e2a07f4fc3c9b3a3d58e1da5ea86d4918b61",
+      "sha256": "ba3f144008db8d715e0d8a7fef6f3b79c79fbb6cbf1d60dac6b0603ce560e91b",
+      "bytes": 2999
+    },
+    {
+      "path": "Livox-SDK2/samples/lidar_cmd_observer/mid360_config.json",
+      "git_blob_sha1": "128ec5eca7887dcaad69a31ac7ee5a16e15d0e66",
+      "sha256": "eb942e2ec0f9db40adfbcfcb493b73f301150f5215f81c160d70ebd445209559",
+      "bytes": 510
+    },
+    {
+      "path": "Livox-SDK2/samples/lidar_cmd_observer/mid360s_config.json",
+      "git_blob_sha1": "5d3a0bd59c42afaf0d13a5435bd302da500a1c99",
+      "sha256": "f66b46b91c06dcde4ae948a029012eceefceff3ca1e49c47df65f416e230932c",
+      "bytes": 511
+    },
+    {
+      "path": "Livox-SDK2/samples/livox_lidar_quick_start/CMakeLists.txt",
+      "git_blob_sha1": "3f17580251192b45a5f16525d69ccecdde6d43b2",
+      "sha256": "747067c949e6a87d9dbf34ffca2f6189fedafe6dc8f4673b8612998ed18285d1",
+      "bytes": 202
+    },
+    {
+      "path": "Livox-SDK2/samples/livox_lidar_quick_start/config.json",
+      "git_blob_sha1": "e2034971c73a86987e87199156af5b27815ea145",
+      "sha256": "092516d76b94d0488cad6cd65616d16dbb8ce238a0c21e023bae592356294d1b",
+      "bytes": 517
+    },
+    {
+      "path": "Livox-SDK2/samples/livox_lidar_quick_start/hap_config.json",
+      "git_blob_sha1": "4f3d2472eb36b396fbe09bee40fe0b212bdb2cdd",
+      "sha256": "1d61cff146b8fb415b4aa95a7f0d6ce89f6e3989176c8b7dc5c28be59b50cbbe",
+      "bytes": 499
+    },
+    {
+      "path": "Livox-SDK2/samples/livox_lidar_quick_start/main.cpp",
+      "git_blob_sha1": "c0fa2b95d92a56fad4eec4337706bd84c994091e",
+      "sha256": "bf18eeb72ec637e23b738f2c9eac66c30da3c2d1249f730fe562810b5abd4f0e",
+      "bytes": 8490
+    },
+    {
+      "path": "Livox-SDK2/samples/livox_lidar_quick_start/mid360_config.json",
+      "git_blob_sha1": "128ec5eca7887dcaad69a31ac7ee5a16e15d0e66",
+      "sha256": "eb942e2ec0f9db40adfbcfcb493b73f301150f5215f81c160d70ebd445209559",
+      "bytes": 510
+    },
+    {
+      "path": "Livox-SDK2/samples/livox_lidar_quick_start/mid360s_config.json",
+      "git_blob_sha1": "fb0e54c709c8e4ab3fa9bdebce5d7577d3b2fe12",
+      "sha256": "bb73913ae315ed92a45d89a361548a86eacbf6f18db0cef144c93bb18abcc9ee",
+      "bytes": 471
+    },
+    {
+      "path": "Livox-SDK2/samples/livox_lidar_rmc_time_sync/CMakeLists.txt",
+      "git_blob_sha1": "c9760877f50300d17498348911245c7b1ddcb5f6",
+      "sha256": "8ba555c39bb3e33fe164a727028acfa8c23b2c1afcb44d0ce2fa5e1a84ae2ab8",
+      "bytes": 308
+    },
+    {
+      "path": "Livox-SDK2/samples/livox_lidar_rmc_time_sync/config.json",
+      "git_blob_sha1": "e2034971c73a86987e87199156af5b27815ea145",
+      "sha256": "092516d76b94d0488cad6cd65616d16dbb8ce238a0c21e023bae592356294d1b",
+      "bytes": 517
+    },
+    {
+      "path": "Livox-SDK2/samples/livox_lidar_rmc_time_sync/hap_config.json",
+      "git_blob_sha1": "4f3d2472eb36b396fbe09bee40fe0b212bdb2cdd",
+      "sha256": "1d61cff146b8fb415b4aa95a7f0d6ce89f6e3989176c8b7dc5c28be59b50cbbe",
+      "bytes": 499
+    },
+    {
+      "path": "Livox-SDK2/samples/livox_lidar_rmc_time_sync/linux/synchro.cpp",
+      "git_blob_sha1": "b5abcd8385dc8f544b629ecdf23b30502d704991",
+      "sha256": "27c6092d309449c54ca265308a449f1320610df971e5f8689e52229bb294139e",
+      "bytes": 6288
+    },
+    {
+      "path": "Livox-SDK2/samples/livox_lidar_rmc_time_sync/main.cpp",
+      "git_blob_sha1": "34d20397314cded2288862468358a9bb1850b4a4",
+      "sha256": "6ad052c16deed02f98a1ecf324e5f998e155392eff1c5f2e5f559ebeefd08fff",
+      "bytes": 4193
+    },
+    {
+      "path": "Livox-SDK2/samples/livox_lidar_rmc_time_sync/mid360_config.json",
+      "git_blob_sha1": "128ec5eca7887dcaad69a31ac7ee5a16e15d0e66",
+      "sha256": "eb942e2ec0f9db40adfbcfcb493b73f301150f5215f81c160d70ebd445209559",
+      "bytes": 510
+    },
+    {
+      "path": "Livox-SDK2/samples/livox_lidar_rmc_time_sync/mid360s_config.json",
+      "git_blob_sha1": "5d3a0bd59c42afaf0d13a5435bd302da500a1c99",
+      "sha256": "f66b46b91c06dcde4ae948a029012eceefceff3ca1e49c47df65f416e230932c",
+      "bytes": 511
+    },
+    {
+      "path": "Livox-SDK2/samples/livox_lidar_rmc_time_sync/synchro.h",
+      "git_blob_sha1": "9e97847e456bedee3385d2c2fef7db88d5b19ffd",
+      "sha256": "37792059eba3ec98811392baece762f113710fb116a2f6c983c0c7acccb73c95",
+      "bytes": 2901
+    },
+    {
+      "path": "Livox-SDK2/samples/livox_lidar_rmc_time_sync/win/synchro.cpp",
+      "git_blob_sha1": "7a94f435a3e63794e1bea1575e4ac5e096dcdba3",
+      "sha256": "7e44d030de8779db17ecdb4dfcc9d818a0fff3b916287542a2e798d1a1262a29",
+      "bytes": 5809
+    },
+    {
+      "path": "Livox-SDK2/samples/logger/CMakeLists.txt",
+      "git_blob_sha1": "72b625bdafa9c77c65e677251172604eee5077c2",
+      "sha256": "5738ce24a51b2bc61fa2874238582c7adafe83bd3ad7fdb0600ff0983f11b5c9",
+      "bytes": 181
+    },
+    {
+      "path": "Livox-SDK2/samples/logger/config.json",
+      "git_blob_sha1": "34093d04eac4862419cd45af05f136b0dc4ef8ff",
+      "sha256": "1cba2dea623af1ba36afb82d7c298c4eece443bf1f20975c39438a32058cc418",
+      "bytes": 612
+    },
+    {
+      "path": "Livox-SDK2/samples/logger/hap_config.json",
+      "git_blob_sha1": "5de5739632a360871260047575839add342058ee",
+      "sha256": "8cd0e7529e0607cc56f1fa8ce004808ae15f966fe980977fff98a53fe727a262",
+      "bytes": 549
+    },
+    {
+      "path": "Livox-SDK2/samples/logger/main.cpp",
+      "git_blob_sha1": "1d51aa067d83883cc241a7f506da5a9538e5987f",
+      "sha256": "281849a75f5d861d6d2ad0fe6657d08476c0934ad24e2865801d61d3a261ad0e",
+      "bytes": 4729
+    },
+    {
+      "path": "Livox-SDK2/samples/logger/mid360_config.json",
+      "git_blob_sha1": "0004bb4b3f1689e724684216d6891ff08d31f59d",
+      "sha256": "91abf6180cb3a4990e41046e4ee041dc7ae363bb133eb46461526c67035bd519",
+      "bytes": 560
+    },
+    {
+      "path": "Livox-SDK2/samples/logger/mid360s_config.json",
+      "git_blob_sha1": "3ba455ec578fe5d20783f26667503491ac138733",
+      "sha256": "315c407a89b45958a2f1366ec61cc338322cdaa580ea72d199b4afbb77f18fc3",
+      "bytes": 561
+    },
+    {
+      "path": "Livox-SDK2/samples/multi_lidars_upgrade/CMakeLists.txt",
+      "git_blob_sha1": "74f08d6c42c4d16b4ade532365b87252e279256f",
+      "sha256": "edd517690359d9d6b6700d4e58fd19316a3a8d3e2286a06ca1178793aabc2286",
+      "bytes": 203
+    },
+    {
+      "path": "Livox-SDK2/samples/multi_lidars_upgrade/config.json",
+      "git_blob_sha1": "e2034971c73a86987e87199156af5b27815ea145",
+      "sha256": "092516d76b94d0488cad6cd65616d16dbb8ce238a0c21e023bae592356294d1b",
+      "bytes": 517
+    },
+    {
+      "path": "Livox-SDK2/samples/multi_lidars_upgrade/hap_config.json",
+      "git_blob_sha1": "4f3d2472eb36b396fbe09bee40fe0b212bdb2cdd",
+      "sha256": "1d61cff146b8fb415b4aa95a7f0d6ce89f6e3989176c8b7dc5c28be59b50cbbe",
+      "bytes": 499
+    },
+    {
+      "path": "Livox-SDK2/samples/multi_lidars_upgrade/main.cpp",
+      "git_blob_sha1": "c84bc1edd7c3f154ff377edc26b4a8871551e6c9",
+      "sha256": "bfd55a484ef6fd37d09a27a70ead21b18aaafd2ffbc716d59490386b281a8491",
+      "bytes": 3939
+    },
+    {
+      "path": "Livox-SDK2/samples/multi_lidars_upgrade/mid360_config.json",
+      "git_blob_sha1": "128ec5eca7887dcaad69a31ac7ee5a16e15d0e66",
+      "sha256": "eb942e2ec0f9db40adfbcfcb493b73f301150f5215f81c160d70ebd445209559",
+      "bytes": 510
+    },
+    {
+      "path": "Livox-SDK2/samples/multi_lidars_upgrade/mid360s_config.json",
+      "git_blob_sha1": "5d3a0bd59c42afaf0d13a5435bd302da500a1c99",
+      "sha256": "f66b46b91c06dcde4ae948a029012eceefceff3ca1e49c47df65f416e230932c",
+      "bytes": 511
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/CMakeLists.txt",
+      "git_blob_sha1": "15e960d5ae64636562ba461f70b9f37c1e424d80",
+      "sha256": "c25035c893562d1f6a3b5b5e0f39437bfe9bdd4b623af8c1fd36e1098958aca4",
+      "bytes": 4337
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/base/command_callback.h",
+      "git_blob_sha1": "909f1cbb693f3c6ba548386079ad1ab0dc4fa23e",
+      "sha256": "11ea39c0df2a1c1fcd55e71e7fdfc3e73df9ecdd5d4c38b7795d86ae935f45bc",
+      "bytes": 7515
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/base/io_loop.cpp",
+      "git_blob_sha1": "e2dfffc7faa39bd401c13d9bbe980ec225bbb4d2",
+      "sha256": "51acbb82696af042f1df0dd35deab6638078a3728b23cde0d34bacc1b63457b4",
+      "bytes": 3449
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/base/io_loop.h",
+      "git_blob_sha1": "00fe0d75da70103a8d6d87d55f5260b422d019de",
+      "sha256": "d589b5c511414ad085a314f5ac6f340d68485e4c9b6ef8741f286d6787f9bb17",
+      "bytes": 2670
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/base/io_thread.cpp",
+      "git_blob_sha1": "22188f162fbe4db1467b89c3950ac87faa92dafd",
+      "sha256": "ccca2b4e207361b25c0d23f7d0436c21fe228cc17056ad6ffd8ba2a389673f52",
+      "bytes": 1641
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/base/io_thread.h",
+      "git_blob_sha1": "0302d9d47f755ad843f5ceebfd9d6ca775273d04",
+      "sha256": "dc2f129b486f95b1e7ca8dcb2fd3dd40f53b65a7140154674787d66f6e3595f4",
+      "bytes": 1693
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/base/logging.cpp",
+      "git_blob_sha1": "4fdd7b0836a336a39e72055fb9a1e68e98211e22",
+      "sha256": "1e854fb0936239af466d114055925e2a14aa4059b2136345f85687e8fae9c26f",
+      "bytes": 2146
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/base/logging.h",
+      "git_blob_sha1": "40c30e7ab6042b948575eea2a459588daa06ea61",
+      "sha256": "d2a8c658e06a9531c8d9aa261579bdc44efde977924d3759f0c195ff3a5d6339",
+      "bytes": 2468
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/base/multiple_io/multiple_io_base.cpp",
+      "git_blob_sha1": "1b0f631db8704637df63e0c03535659a1b173ff3",
+      "sha256": "047678daec2fc09c9090d916cdbd7207e7f808ce7d952e4519c469c044b7bd39",
+      "bytes": 2634
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/base/multiple_io/multiple_io_base.h",
+      "git_blob_sha1": "e9d6ccada9bad71da13ce55400729b189fbb7ace",
+      "sha256": "0ddd32c039d5f99d4d2bb7715a4a857b92dd76b2a2b44e3b8015898f0babf15d",
+      "bytes": 2701
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/base/multiple_io/multiple_io_epoll.cpp",
+      "git_blob_sha1": "d5b709c3bf271e6aebc2050f59ec51d5589168b6",
+      "sha256": "a3aa786e33be4f4830994f30d97e405aba6b12db26a77aac5ee5ea28d54a52f4",
+      "bytes": 3119
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/base/multiple_io/multiple_io_epoll.h",
+      "git_blob_sha1": "b969750c5c14dbf81c6faab20e67ca62aa09e21d",
+      "sha256": "19b867eed1a4b7f387878c56c42cdc334ea6ac7e1e8aafb81a35862b8e953263",
+      "bytes": 1770
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/base/multiple_io/multiple_io_factory.h",
+      "git_blob_sha1": "8ead6ab691c7cd765d5d25c5c4481c019de7e094",
+      "sha256": "6b821852ea5ca0ba7ea12176da702bd5ad2e5b450275e236ae42510bef3dc277",
+      "bytes": 2021
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/base/multiple_io/multiple_io_kqueue.cpp",
+      "git_blob_sha1": "1d86503e4a329bc389731be2e38d2beafe4b51d0",
+      "sha256": "3fc579c9ae20a547eed5e6b2d26c975d03eb3f9031f2523f21d14711d2a39004",
+      "bytes": 4146
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/base/multiple_io/multiple_io_kqueue.h",
+      "git_blob_sha1": "75b609a6e8f76d42f3aac8cf38c27071d715ce00",
+      "sha256": "294f80e0108191f2adf6914f7f7ef2bb3280df093971f71dce2eccd4c45524e0",
+      "bytes": 1806
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/base/multiple_io/multiple_io_poll.cpp",
+      "git_blob_sha1": "a639abf4750a86be8e0cfcfd457734878bb565e4",
+      "sha256": "1d3f75e8fd1ff5332e8b9c631155960c7f85fff73cf8606d8c599c71b8dd339c",
+      "bytes": 3129
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/base/multiple_io/multiple_io_poll.h",
+      "git_blob_sha1": "5010405a16f9a5beaf812df92cc031abeb4e2abe",
+      "sha256": "4d1260881bcb88f0f5d9ba7b3a74ba527b1381163eaa0db6ef4d037e6f9dd045",
+      "bytes": 1761
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/base/multiple_io/multiple_io_select.cpp",
+      "git_blob_sha1": "8adbfca78df3b6bf5e88fc5a881b38dd05a92c32",
+      "sha256": "45e8e7708c9f16591e62435dcd3261f0757e710de0e3f9ef480666fed73acc6c",
+      "bytes": 3275
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/base/multiple_io/multiple_io_select.h",
+      "git_blob_sha1": "9c845540f966997e44198bc679f21ab1f49e4cb4",
+      "sha256": "d65c2279429afe5341a7f7ebfd25618c84d60491934a5b91301b15daf18861e4",
+      "bytes": 1734
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/base/network/network_util.h",
+      "git_blob_sha1": "64ceb7bbc0be22ca2c684d0a1d5d6e02b47ca977",
+      "sha256": "415701f2c7c414ae7552136421d92f635ddd6817cf489e3de96c21b775b780c8",
+      "bytes": 2178
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/base/network/unix/network_util.cpp",
+      "git_blob_sha1": "175b37033c53cdcc91295d631b5f22d8dc735de8",
+      "sha256": "0627dff0662394da7b2f839b9aa649114d950aac1bd2c75049ebb94e96d4fc3e",
+      "bytes": 6139
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/base/network/win/network_util.cpp",
+      "git_blob_sha1": "fed218247f020b385cac79ed561d9774f5c8fb3c",
+      "sha256": "869c288ee43fe73548d812516140fc02d729bc20811df89a240a7e82783bd331",
+      "bytes": 5662
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/base/noncopyable.h",
+      "git_blob_sha1": "006eeb52c1a9d328065d51cee7715413024b7175",
+      "sha256": "0735ef6902571ec9ad6421d81ad9a4bc00b78f0824171a5787e308602c4bb4a3",
+      "bytes": 1500
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/base/thread_base.cpp",
+      "git_blob_sha1": "52c7785765782cb9b43e8c46ff441dc9a2e78ca0",
+      "sha256": "93b8b2c613a6df84e52395ff5785dfa9e67ce5b40cf4085c576b0971805e5bca",
+      "bytes": 1839
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/base/thread_base.h",
+      "git_blob_sha1": "c277caa0954adade321a94ea2867ac298bbe989b",
+      "sha256": "4ea799e351d9ac4db9f393fd4a8cfa75986226b2f5167315d4c6be854a6a21d1",
+      "bytes": 1694
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/base/wake_up/unix/wake_up_pipe.cpp",
+      "git_blob_sha1": "1c95749ccd02570a350977c93a7c931300198fe6",
+      "sha256": "fd98af5806f5dcb77418d0c89ab67017999ed1551fab6160df071e6d8d28bbe1",
+      "bytes": 2768
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/base/wake_up/wake_up_pipe.h",
+      "git_blob_sha1": "7c1d406944bbc462c0fb67a5470541602cff85f1",
+      "sha256": "9ebc0266829f033c3ce52ff51cc8811a02a6f8c1fe7b444ca2662aedd2910e75",
+      "bytes": 1581
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/base/wake_up/win/wake_up_pipe.cpp",
+      "git_blob_sha1": "9974ac796dccba2218b74ccddeb17fba54549ee2",
+      "sha256": "a13434ea5a9f466bc207ad9d253f389427e7d8d0ea1bb2ed477911e1412d4ac5",
+      "bytes": 3631
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/comm/comm_port.cpp",
+      "git_blob_sha1": "9df5518ca6bd36246fb828c90df3d88658e28fa8",
+      "sha256": "5cd600de3810030216da6313c399ef114386b98bd40020138a13004fa52a1d3f",
+      "bytes": 1926
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/comm/comm_port.h",
+      "git_blob_sha1": "f93b74ff4409a154cbfc273699790655161da966",
+      "sha256": "1d27321f1a975779a479827d1f0162638a47dfe5dbc7201d68a806d0a5f8053b",
+      "bytes": 1671
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/comm/define.h",
+      "git_blob_sha1": "a4be374db2201c253da8996e9d290576186fba7f",
+      "sha256": "ff2f4748ad190ee2fced18f092e881d64780a1342879d9d310bd0014518a6e9e",
+      "bytes": 11906
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/comm/generate_seq.cpp",
+      "git_blob_sha1": "4de5142e58af3ec4aaab5b9178e2df27d71ddfa1",
+      "sha256": "5da24cfef577446f257358cd800cac96af5b415e0db37ca4f0e73f22f80610e1",
+      "bytes": 1599
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/comm/generate_seq.h",
+      "git_blob_sha1": "420a7fb633b7fc7e366c383b0064e5c235c9ab38",
+      "sha256": "53e0af4907e9939e29e8f577dc20776fa19d8b095e8aa28f0826dfd3db736e32",
+      "bytes": 1448
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/comm/protocol.h",
+      "git_blob_sha1": "8807449fd584123eb6185ff2fa04937e197e120d",
+      "sha256": "342e11184d7c775d2cd178cf605586427d13a1fcd9cd9437211dbec61f8a09dd",
+      "bytes": 2667
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/comm/sdk_protocol.cpp",
+      "git_blob_sha1": "145f7a55e6b5f4edd461fcbb384b4cb276d70cf4",
+      "sha256": "f863c28d96588afbf870c80702bc43e7f7c77fd41c5dcd3c99f48ea46a7f46e7",
+      "bytes": 4109
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/comm/sdk_protocol.h",
+      "git_blob_sha1": "43f49d0121b5ff9a50f85e3e7335a3b0277647a0",
+      "sha256": "4cf4e4818a9e3541a2839eb40f0c167bd57257ab759f5a030c4f165679b816fd",
+      "bytes": 2447
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/command_handler/build_request.cpp",
+      "git_blob_sha1": "a4e750ef3d0244f747e0b52047464bc70a570288",
+      "sha256": "db7e09c0bf2a26e50d5adacc2790a2b03a829a01fb0cf8d30611288ce0dc98bd",
+      "bytes": 18215
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/command_handler/build_request.h",
+      "git_blob_sha1": "d040db9e627162059c0e6419374d6e7b4d123798",
+      "sha256": "ec97044f15acbb75737067f174bb6b1f5e1a3d3c931ae2bff83fade692781fc0",
+      "bytes": 2901
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/command_handler/command_handler.h",
+      "git_blob_sha1": "b23a546db3c2693fb58ad17099ca3ee633972dd1",
+      "sha256": "45188ace6b6aad784b52fbdef0e5dde10bd3fc338f4d33f8cb7aebfce2554abe",
+      "bytes": 2265
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/command_handler/command_impl.cpp",
+      "git_blob_sha1": "df4edffe61026d07b0eba7c85ff18136d83f1010",
+      "sha256": "c0e7ddbb906c8fa1b09e166019fbc0691ae8b49170ec24edfd32947d487a06c8",
+      "bytes": 37424
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/command_handler/command_impl.h",
+      "git_blob_sha1": "99655c24e6afdc3575ea7bd43adfe702b8a9a243",
+      "sha256": "bc5a227a9c9257528c5bb23a7e994a0b3e3fc87d48d3593d9a91e00a92a39ae1",
+      "bytes": 8130
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/command_handler/general_command_handler.cpp",
+      "git_blob_sha1": "942163421b2e52d67ffe79fd66df2bb961a5634c",
+      "sha256": "00d2ffe389c2ae1eaa3a8fe736a97f401029dd07bb2bb334e90b014e5052776f",
+      "bytes": 28292
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/command_handler/general_command_handler.h",
+      "git_blob_sha1": "198cf5bac0346fed9aba29aa0dba2a5f408629d8",
+      "sha256": "b8691365d81e2e2821abe471615415e3cf4bbfb6d2862ee2c31e432c78e3d16a",
+      "bytes": 6029
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/command_handler/hap_command_handler.cpp",
+      "git_blob_sha1": "4ce5008e2662e36af4e2342abd52b5cc3333747c",
+      "sha256": "00758c6d123129e17a72f540e4e52698d0dc27350eeb87eaffe93a1782320173",
+      "bytes": 10813
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/command_handler/hap_command_handler.h",
+      "git_blob_sha1": "82da5813851909bc3638087da263645bca1043ce",
+      "sha256": "2468ee96a29765a1f0dda72f321615ed38953ec70a2e1e114c047a1d3c3f90b1",
+      "bytes": 3424
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/command_handler/mid360_command_handler.cpp",
+      "git_blob_sha1": "24308cd4db5f4bc2116b94dac5dc276ef95e2a54",
+      "sha256": "7681446e81272dce10b0c7d6944287760c015268a137e4d2673882de17d0cea5",
+      "bytes": 10543
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/command_handler/mid360_command_handler.h",
+      "git_blob_sha1": "662c32a3ddc5f7fbd8fbdf53fdad35edd2734036",
+      "sha256": "08bc929f9b80cefa4fa53abce3e5ecda82124cbd37450173c9609a30134c0ff8",
+      "bytes": 3491
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/command_handler/mid360s_command_handler.cpp",
+      "git_blob_sha1": "413dc407dea2f2daa3e6ee30222477965e434538",
+      "sha256": "c948e0708f0129b20f255b105566f42591a979fe3df0e045b0be1354f62b0a54",
+      "bytes": 10442
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/command_handler/mid360s_command_handler.h",
+      "git_blob_sha1": "9ef9125905486ea9cede5f78b444c05a10f45805",
+      "sha256": "7ab741996aa11b1842b6f90a176790600485bc0fa106d2be5bf43b52aa04f9fa",
+      "bytes": 3413
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/command_handler/parse_lidar_state_info.cpp",
+      "git_blob_sha1": "1e87746f96554a0a72bdbb71ffe6eebc14c3843d",
+      "sha256": "31165620b8fcdd111a195aa563f76ba3500bb44fe1745d27a816d3833d1d9f2e",
+      "bytes": 26635
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/command_handler/parse_lidar_state_info.h",
+      "git_blob_sha1": "94ac77cf20af1d0f5a8ac27cd3d486f075391ae0",
+      "sha256": "2301e1d8e15a448e2d6029d7077f5780f571c180633674a8481daa97ac654d9f",
+      "bytes": 2537
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/data_handler/data_handler.cpp",
+      "git_blob_sha1": "69acac029d274825f60476209bc380d6789e0585",
+      "sha256": "1024046feaae3438652bcd82dd4174d29973ac5c772c61cd0257ea62852531a0",
+      "bytes": 3954
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/data_handler/data_handler.h",
+      "git_blob_sha1": "ed8b607ccdea1234e6505f1462646f57e9f49b46",
+      "sha256": "9498f0ee4c4ca979b55ef3878a9a41273f7a7d583edab5b16cc833951421e57c",
+      "bytes": 2410
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/debug_point_cloud_handler/debug_point_cloud_handler.cpp",
+      "git_blob_sha1": "3e94807c96531e9a36df29c2ded122c50369a82f",
+      "sha256": "c2e45ce27488562bed2cac67853290fa35cbe85f770b6482b022b397a9592d66",
+      "bytes": 4236
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/debug_point_cloud_handler/debug_point_cloud_handler.h",
+      "git_blob_sha1": "4714e1b1ebfaabaff54359c27bc87ff7deecc48d",
+      "sha256": "2af6044de25639eaf1a0fac07b22c2b5d6dde1d9313fcccc80ced625a0997b09",
+      "bytes": 2459
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/debug_point_cloud_handler/debug_point_cloud_manager.cpp",
+      "git_blob_sha1": "9e5745c099cfa64f55fb055575f46f03949b0687",
+      "sha256": "dbf910247fcde590d9e643e1d1572182233d0f8146d0b4cd31f56a7b311fd5e8",
+      "bytes": 1911
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/debug_point_cloud_handler/debug_point_cloud_manager.h",
+      "git_blob_sha1": "83b78b861d907b561efb001674ff8633a3f6d450",
+      "sha256": "e55e23eb40c4db42ad1743650b8ac6af31e9c552a5db43cb57f234fb8eac728a",
+      "bytes": 2406
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/device_manager.cpp",
+      "git_blob_sha1": "6ceda154dc655d4f5d4d54230a0795b83fbfc147",
+      "sha256": "c4d56849f19aa571b3d3fb3a9db64e25bf8cf6fc64adf4009d966ba1804d01c7",
+      "bytes": 32328
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/device_manager.h",
+      "git_blob_sha1": "673c18fe7f5d0167bf750371006f8c5d22be232a",
+      "sha256": "78c97876a8c1faa093314fd0c27b57f71884247f2bc7aa079b0b54005c880c3e",
+      "bytes": 7054
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/livox_lidar_sdk.cpp",
+      "git_blob_sha1": "fcd69d7217dcdd1b6bbde87d5755e6dc8af6c610",
+      "sha256": "f74d9a2f31e1a6f57981f984d861868acf4623ea969d4c690314ba0b78a222c3",
+      "bytes": 14036
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/logger_handler/file_manager.cpp",
+      "git_blob_sha1": "4a5413332a5218dc3ef332ea9e895f7e6df3d3de",
+      "sha256": "5062c984f8a54e685571b685b4169e26c6da7015954f2aaf9052195405e6e00c",
+      "bytes": 11084
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/logger_handler/file_manager.h",
+      "git_blob_sha1": "242a431e5c5ad4549e5192baf72810d36977a694",
+      "sha256": "14236dfb3326144d68e24804d0af61e0d79fa158aa5994090d1d61e41163cc64",
+      "bytes": 1897
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/logger_handler/logger_handler.cpp",
+      "git_blob_sha1": "5fefa0eabd2eee2655bb1d3bd1c62acc995240ad",
+      "sha256": "799c64d2439df3ef1dead55c0acc1407a35148d764db14d8df73b985c2bd7b9c",
+      "bytes": 7642
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/logger_handler/logger_handler.h",
+      "git_blob_sha1": "15d7181a8d9dc9c6bb4dd4ca7ce8db68e5a96bf4",
+      "sha256": "81aeaaa9892c10d9f17aad341f1bc13a21d2527648bb279ab6459f04105697e7",
+      "bytes": 2920
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/logger_handler/logger_manager.cpp",
+      "git_blob_sha1": "fb1240ad442241e9541f35cb095443c151d06efb",
+      "sha256": "3b22a3b5366c176eb316b1c233ee2e6b2bc5aa1feb8b93fcdff62de896ffd144",
+      "bytes": 13219
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/logger_handler/logger_manager.h",
+      "git_blob_sha1": "def3b8f85f2837dbed70bc1db8b7106530864430",
+      "sha256": "e029b74d199a4fa5351614656e9204a994d89c63ac4a8592c06cccae837f0d26",
+      "bytes": 3985
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/params_check.cpp",
+      "git_blob_sha1": "bd2c27ca48f7802f1514a14afde216b96bed7348",
+      "sha256": "f9db517793c6ee33f3d19c2e447c158c94a1f54144141bc92fbd7f398e394557",
+      "bytes": 8571
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/params_check.h",
+      "git_blob_sha1": "ecf1a2295dbac82b590f77b0ab758d74039a72be",
+      "sha256": "1664f63068ca0ebc278ae94a7d012df19c265ff0a68f3b28e0566027950610c2",
+      "bytes": 2020
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/parse_cfg_file.cpp",
+      "git_blob_sha1": "615d99c08b8b1ba10c13f1a2bea348a21277f9ce",
+      "sha256": "38eda5b8ba5d8efa768e8256fcbb777b9e33a4036ada260b491b2a06c0ac03bb",
+      "bytes": 14956
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/parse_cfg_file.h",
+      "git_blob_sha1": "35b9541c12100df869ba151def1b32b25158323a",
+      "sha256": "ba77ab667b983b71ad4dc8e1d37e3cfdc3904f35f61f6f3baf381b40da65394e",
+      "bytes": 3222
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/upgrade/firmware.cpp",
+      "git_blob_sha1": "1bfbfb6281e535e6a4ada2044d7eaa27d1aed923",
+      "sha256": "42e66a98f29926ebe35035e3b546105e0207457f65f452fb1e771091f97eaaee",
+      "bytes": 3086
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/upgrade/firmware.h",
+      "git_blob_sha1": "c39f22cadba201af9c9dbc221bae9a48f6208171",
+      "sha256": "2c4084706a8824cc5c010aca2d7ba56943f76ce16f42c27157ea96d3b08711f4",
+      "bytes": 3954
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/upgrade/livox_lidar_upgrader.cpp",
+      "git_blob_sha1": "6286c4c1ad72f8930f8e3cdc5d456999cb0ca60e",
+      "sha256": "77b5d91b99ac8a95c70f4f8003b95f87e25ee78ff25b319afc5ec43ced163b60",
+      "bytes": 15978
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/upgrade/livox_lidar_upgrader.h",
+      "git_blob_sha1": "55140d52f0cb453eda4bcc76c2b53a4e818e97a0",
+      "sha256": "836f1f9c1632edffa5f5a980ef6c5e5b855b6069f16f180a58ba181e72edb21f",
+      "bytes": 3443
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/upgrade_manager.cpp",
+      "git_blob_sha1": "3cfdc6787fa62917e703d03bdb4f35fabfb333e5",
+      "sha256": "848719bb42fc04f4f214b282a478fd97f3858749c5924cb9dc3a863826d02b86",
+      "bytes": 2833
+    },
+    {
+      "path": "Livox-SDK2/sdk_core/upgrade_manager.h",
+      "git_blob_sha1": "8ceaed58fc47541749a4ee2a52e544a777e6ae1b",
+      "sha256": "1128979b3e6ea4005504a53c198f1d5f238eef500295890e76a41fcb767033fc",
+      "bytes": 2486
+    }
+  ]
+}
