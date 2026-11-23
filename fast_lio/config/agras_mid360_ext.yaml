@@ -20,8 +20,8 @@
             scan_line:  4
             blind: 0.3
             timestamp_unit: 3            # 3=US (MID360 点时间戳单位微秒)
-            scan_rate: 10                # ★ LiDAR 10Hz, 匹配 publish_freq (10Hz)
-                                        #   IMU 500Hz → 每扫描约50帧IMU数据
+            scan_rate: 20                # Match the driver's default 20 Hz cloud publication target.
+                                        #   500 Hz external IMU -> about 25 samples per cloud.
 
         mapping:
             acc_cov: 0.1

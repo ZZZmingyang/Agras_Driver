@@ -12,8 +12,7 @@
 
     initialization:
         cut_frame_num: 5            # must be positive integer
-        orig_odom_freq: 10          # ★ MID360 标准扫描率 10Hz (与驱动 publish_freq/FAST-LIO scan_rate 一致;
-                                    #   之前误设 33 导致互相关时间换算错误, Time Lag 标出 -0.8s 级荒谬值)
+        orig_odom_freq: 10          # calibration.launch.py explicitly keeps driver publication at 10 Hz.
         mean_acc_norm: 9.81         # 外置/内置 IMU 均输出 m/s² (g 单位时填 1.0)
         online_refine_time: 0.0      # ★ 0=跳过在线精化 (内置 IMU 噪声大, 精化阶段 EKF 易发散:
                                      #   实测 gyro bias 飙到 0.9 rad/s 级荒谬值; 直接采用 Initialization 结果)

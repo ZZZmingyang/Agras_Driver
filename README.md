@@ -78,6 +78,31 @@ ros2 launch lidar_imu_init agras_mid360.launch.py
 `fast_lio` 是现有 ROS 包名，`fast_lio2.launch.py` 明确表示组合运行 FAST-LIO2。
 当前功能为激光惯性里程计及点云建图；未包含回环优化或完整 Nav2 导航。
 
+## 点云与 IMU 频率
+
+驱动、原始点云查看和 FAST-LIO2 组合入口默认点云目标为 **20 Hz**，约积累 50 ms 的点后发布。
+CustomMsg 和 PointCloud2 来自同一帧，采用相同的目标频率；单帧点数随积累时间缩短而减少，
+不会因此提高雷达本身每秒产生的点数。当前分帧由数据包到达触发，不保证严格每 50 ms 发布。
+
+内置 IMU 收到一条发布一条，不插值、不重复、不强制降采样到 180 Hz。
+原作者记录的 Agras 内置 IMU 频率约为 **184 Hz**，点云帧率为 25～33 Hz 动态；
+这些是作者对设备的记录，与本仓库的 ROS 点云发布目标应分别理解，实际设备频率仍需测量。
+FAST-LIO2 按时间戳取对应的 IMU 数据，不要求每帧点云包含固定条数的 IMU 测量。
+
+```bash
+# 临时切回 10 Hz 查看原始点云
+ros2 launch agras_bringup view.launch.py publish_freq:=10.0
+
+# 实物接通后分别检查两个频率（另一个已加载工作区的终端）
+ros2 topic hz /livox/lidar/pointcloud
+ros2 topic hz /livox/imu
+```
+
+FAST-LIO2 默认参数中的 `preprocess.scan_rate` 为 20；改变点云频率时，应使用相应算法参数文件。
+`calibration.launch.py` 单独固定驱动目标为 **10 Hz**，与 `calibration.yaml` 的
+`initialization.orig_odom_freq: 10` 保持一致，不跟随普通驱动的新默认值。
+单独运行 LI-Init 时，也需要将另行启动的驱动设置为 `publish_freq:=10.0`。
+
 ## 话题和坐标系
 
 默认 `xfer_format:=4`，一个驱动从同一帧发布：
@@ -129,4 +154,17 @@ docker run --rm -it --network host \
 `tools/tests/` 只供开发时做离线回归，不是用户编译或启动的前置步骤。
 运行前加载已编译工作区；使用回环配置和独立 ROS_DOMAIN_ID，避免干扰其他 ROS 会话。
 RViz 自动显示测试另需 Xvfb；常规启动不需要它。
-历史源码说明和旧入口参考保存在 `docs/`，不安装为当前 launch。
+旧入口参考保存在 `docs/legacy_launch/`，不安装为当前 launch。
+
+## 原作者 README
+
+原文按导入改造前的作者提交 `b0ba8cd24113b0e21db7ec63b556d5d4b8a95e77` 保留在对应包内，
+不改写原文；历史说明中的构建、启动命令及功能描述以本页当前用法为准。
+
+| 原文 | 当前位置 |
+|---|---|
+| Agras 原仓库总说明（含定制固件差异和作者频率记录） | [livox_ros_driver2/README.agras-original.md](livox_ros_driver2/README.agras-original.md) |
+| Livox 驱动原说明 | [livox_ros_driver2/README.md](livox_ros_driver2/README.md) |
+| FAST-LIO 原说明 | [fast_lio/README.upstream.md](fast_lio/README.upstream.md) |
+| LI-Init 原说明 | [lidar_imu_init/README.md](lidar_imu_init/README.md) |
+| 外置 IMU 对比工具原说明 | [fc_ext_imu_verify/README.md](fc_ext_imu_verify/README.md) |

@@ -126,14 +126,14 @@ DriverNode::DriverNode(const rclcpp::NodeOptions & node_options)
   int xfer_format = kPointCloud2Msg;
   int multi_topic = 0;
   int data_src = kSourceRawLidar;
-  double publish_freq = 10.0; /* Hz */
+  double publish_freq = 20.0; /* Hz */
   int output_type = kOutputToRos;
   std::string frame_id;
 
   this->declare_parameter("xfer_format", xfer_format);
   this->declare_parameter("multi_topic", 0);
   this->declare_parameter("data_src", data_src);
-  this->declare_parameter("publish_freq", 10.0);
+  this->declare_parameter("publish_freq", publish_freq);
   this->declare_parameter("output_data_type", output_type);
   this->declare_parameter("frame_id", "frame_default");
   this->declare_parameter("user_config_path", "path_default");

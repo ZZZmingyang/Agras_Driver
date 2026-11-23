@@ -23,7 +23,7 @@
         scan_line:  4
         blind: 0.3
         timestamp_unit: 3            # NS
-        scan_rate: 10
+        scan_rate: 20
 
     mapping:
         acc_cov: 0.1

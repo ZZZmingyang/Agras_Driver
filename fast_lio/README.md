@@ -9,3 +9,7 @@ ROS 包名保留为 `fast_lio`。本包是 FAST-LIO2 的 ROS2 移植与 Agras �
 可用参数：`params_file`、`output_dir`、`rviz`、`rviz_cfg`、`use_sim_time`、`sensor_frame`。
 世界系默认为 `map`，机体系 `body`，传感器系 `livox_frame`。
 来源说明：<https://github.com/hku-mars/FAST_LIO>。
+
+默认点云输入目标为 20 Hz，内置 IMU 保持原生频率，不做 180 Hz 重采样。
+原仓库 FAST-LIO 说明完整保存在 [README.upstream.md](README.upstream.md)，仅供历史参考；
+其中其他包的功能与旧启动命令不代表当前包集合已提供。

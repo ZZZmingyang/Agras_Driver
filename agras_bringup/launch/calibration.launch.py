@@ -15,7 +15,9 @@ def generate_launch_description():
         DeclareLaunchArgument('rviz', default_value='true'),
         DeclareLaunchArgument('params_file', default_value=os.path.join(share, 'config', 'calibration.yaml')),
         DeclareLaunchArgument('output_dir', default_value=os.path.join(os.path.expanduser('~'), '.ros', 'agras', 'calibration')),
-        IncludeLaunchDescription(PythonLaunchDescriptionSource(driver), launch_arguments={'xfer_format': '4'}.items()),
+        # Keep LI-Init's input rate consistent with calibration.yaml (orig_odom_freq: 10).
+        IncludeLaunchDescription(PythonLaunchDescriptionSource(driver),
+                                 launch_arguments={'xfer_format': '4', 'publish_freq': '10.0'}.items()),
         IncludeLaunchDescription(PythonLaunchDescriptionSource(calibration), launch_arguments={
             'params_file': LaunchConfiguration('params_file'),
             'rviz': LaunchConfiguration('rviz'),
